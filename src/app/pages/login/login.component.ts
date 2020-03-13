@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: []
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.auth.loggedIn){
+      this.router.navigate(['Home']);
+    }
   }
 
 }

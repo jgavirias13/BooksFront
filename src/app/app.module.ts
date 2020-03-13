@@ -12,6 +12,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthInterceptor } from './services/auth/auth.interceptor';
+import { BookCardComponent } from './components/book-card/book-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -22,7 +23,8 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    BookCardComponent
   ],
   imports: [
     BrowserModule,
