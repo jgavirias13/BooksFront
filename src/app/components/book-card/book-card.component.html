@@ -1,21 +1,23 @@
 <div class="card mb-3">
     <div class="card-header">
-        {{ book.nombre }}
+        {{ book.autor }}
     </div>
     <div class="row no-gutters">
         <div class="col-md-3">
-            <img [src]="book.imagen" [alt]="book.nombre" class="card-img-top img-fluid rounded mx-auto d-block bookimg" />
+            <img [src]="book.imagen" [alt]="book.nombre"
+                class="card-img-top img-fluid rounded mx-auto d-block bookimg" />
         </div>
         <div class="col-md-9">
             <div class="card-body">
                 <h4 class="card-title">{{ book.nombre }}</h4>
-                <p class="card-text">{{ book.descripcion }}</p>
+                <p class="card-text">{{ book.descripcion | slice:0:400 }}...
+                    <a [routerLink]="['/Book', book._id]">Ver mas</a>
+                </p>
                 <p class="card-text">
                     <small class="text-muted" *ngFor="let tag of book.categorias">
-                        <a href="#">{{ tag }}</a>
+                        <a href="#">{{ tag }} </a>
                     </small>
                 </p>
-                <a [routerLink]="['/Book', book._id]" class="btn btn-outline-primary">Detalles</a>
             </div>
         </div>
     </div>
