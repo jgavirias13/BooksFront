@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.username, this.password)
       .pipe(first())
       .subscribe(
-        result => this.router.navigate(['todos']),
-        err => this.error = 'Could not authenticate'
+        result => this.router.navigate(['Home']),
+        err => this.error = 'No se pudo autenticar'
       );
   }
 

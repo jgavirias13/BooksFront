@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" [routerLink]="['Home']">Mis libros</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn()">
+          <a class="nav-link" [routerLink]="['Favorites']">Favoritos</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn()">
+          <a class="nav-link" [routerLink]="['Profile']">Perfil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn()">
+          <a class="nav-link" [routerLink]="['Login']">Iniciar sesión</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn()">
+          <a class="nav-link" (click)="logout()" href="#">Cerrar sesión</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          #searchQuery
+          (keyup.enter)="searchBook(searchQuery.value)"
+        />
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="searchBook(searchQuery.value)">
+          Search
+        </button>
+      </form>
+    </div>
+  </nav>
+  
