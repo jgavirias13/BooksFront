@@ -14,9 +14,9 @@
                     <a [routerLink]="['/Book', book._id]">Ver mas</a>
                 </p>
                 <p class="card-text">
-                    <small class="text-muted" *ngFor="let tag of book.categorias">
-                        <a [routerLink]="['/Search', tag]">{{ tag }} </a>
-                    </small>
+                    <em class="text-muted" *ngFor="let tag of book.categorias">
+                        <a [routerLink]="['/Search', tag]" class="tag">{{ tag }}</a>
+                    </em>
                 </p>
             </div>
         </div>
