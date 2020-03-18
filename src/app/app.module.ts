@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { AuthInterceptor } from './services/auth/auth.interceptor';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { BookComponent } from './pages/book/book.component';
 import { SearchComponent } from './pages/search/search.component';
+import { NewBookComponent } from './pages/new-book/new-book.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -28,12 +29,14 @@ export function tokenGetter() {
     HomeComponent,
     BookCardComponent,
     BookComponent,
-    SearchComponent
+    SearchComponent,
+    NewBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     JwtModule.forRoot({
       config: {

@@ -24,4 +24,8 @@ export class BookService {
   public searchBooks(query: string){
     return this.http.get<Book[]>(`${this.baseUrl}/libro?search=${query}`);
   }
+
+  public addBook(book){
+    return this.http.post<Book>(`${this.baseUrl}/libro`,book);
+  }
 }

@@ -1,7 +1,14 @@
 <hr>
-<h2>Nuestra colección</h2>
+<div class="container">
+  <h2>Nuestra colección</h2>
+</div>
 <hr/>
-
+<div class="container">
+  <div class="text-right panel">
+    <button class="btn btn-info" [routerLink]="['/NewBook']" *ngIf="loggedIn()">Crear libro</button>
+  </div>
+</div>
+<br>
 <div class="container">
   <app-book-card [book]="book" *ngFor="let book of books"></app-book-card>
 </div>
