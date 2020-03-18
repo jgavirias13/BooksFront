@@ -1,3 +1,7 @@
 .boton{
     margin: 5px;
 }
+
+.material-icons{
+    font-family: 'Material Icons' !important;
+}

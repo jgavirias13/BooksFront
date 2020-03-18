@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +19,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { BookComponent } from './pages/book/book.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NewBookComponent } from './pages/new-book/new-book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -38,11 +42,15 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
