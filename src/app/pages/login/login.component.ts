@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         result => this.router.navigate(['Home']),
-        err => this.error = 'No se pudo autenticar'
+        err => this.error = err.error.message || 'No se pudo autenticar'
       );
   }
 
