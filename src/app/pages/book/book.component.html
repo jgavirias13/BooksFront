@@ -17,7 +17,7 @@
         <hr>
         <ul *ngFor="let categoria of book.categorias">
             <li>
-                <a href="#">{{ categoria }} </a>
+                <a [routerLink]="['/Search', categoria]">{{ categoria }} </a>
             </li>
         </ul>
     </div>

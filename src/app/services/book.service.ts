@@ -20,4 +20,8 @@ export class BookService {
   public getBook(id: string){
     return this.http.get<Book>(`${this.baseUrl}/libro/${id}`);
   }
+
+  public searchBooks(query: string){
+    return this.http.get<Book[]>(`${this.baseUrl}/libro?search=${query}`);
+  }
 }

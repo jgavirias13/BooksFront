@@ -15,7 +15,7 @@
                 </p>
                 <p class="card-text">
                     <small class="text-muted" *ngFor="let tag of book.categorias">
-                        <a href="#">{{ tag }} </a>
+                        <a [routerLink]="['/Search', tag]">{{ tag }} </a>
                     </small>
                 </p>
             </div>

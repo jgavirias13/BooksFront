@@ -1,1 +1,7 @@
-<p>search works!</p>
+<hr>
+<h3>Resultados de la búsqueda</h3>
+<hr/>
+
+<div class="container">
+  <app-book-card [book]="book" *ngFor="let book of books"></app-book-card>
+</div>
