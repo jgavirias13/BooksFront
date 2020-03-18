@@ -9,6 +9,7 @@ import { Book } from 'src/app/models/book.model';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  query: string;
 
   constructor(private activatedRoute: ActivatedRoute, private http:BookService) { }
 
@@ -16,8 +17,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((parameters)  => {
-      const query: string = parameters.query;
-      this.http.searchBooks(query).subscribe((books) => {
+      this.query = parameters.query;
+      
+      this.http.searchBooks(this.query).subscribe((books) => {
         this.books = books;
       })
     });

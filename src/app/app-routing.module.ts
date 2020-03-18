@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'Login', component: LoginComponent},
   {path: 'Home', component: HomeComponent},
   {path: 'Book/:id', component: BookComponent},
-  {path:'NewBook', component: NewBookComponent},
+  {path: 'NewBook', component: NewBookComponent},
+  {path: 'EditBook/:id', component: NewBookComponent},
   {path: 'Search/:query', component: SearchComponent},
   {
     path: '**',

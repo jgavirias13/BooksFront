@@ -3,6 +3,7 @@
     {{ book.nombre }}
 </h1>
 <hr>
+<div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
 <h2 class="text-center"><small>{{ book.autor }}</small></h2>
 <div class="row no-gutters contenido">
     <div class="col-md-3">
@@ -20,5 +21,16 @@
                 <a [routerLink]="['/Search', categoria]">{{ categoria }}</a>
             </li>
         </ul>
+    </div>
+</div>
+<div class="row" *ngIf="loggedIn()">
+    <div class="col-md-4">
+        <button (click)="goBack()" class="btn btn-secondary boton btn-block">Volver</button>
+    </div>
+    <div class="col-md-4">
+        <button [routerLink]="['/EditBook', book._id]" class="btn btn-warning btn-block boton">Editar</button>
+    </div>
+    <div class="col-md-4">
+        <button (click)="delete()" class="btn btn-danger btn-block boton">Eliminar</button>
     </div>
 </div>

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
 import { BookService } from 'src/app/services/book.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material/chips';
-import {ENTER, COMMA} from '@angular/cdk/keycodes';
+import { ENTER, COMMA } from '@angular/cdk/keycodes';
+import { Book } from 'src/app/models/book.model';
 
 @Component({
   selector: 'app-new-book',
@@ -16,6 +17,9 @@ export class NewBookComponent implements OnInit {
   error: string;
   mensaje: string;
 
+  titulo: string = 'Nuevo Libro';
+  book: Book;
+
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
@@ -23,7 +27,7 @@ export class NewBookComponent implements OnInit {
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
 
-  constructor(private formBuilder: FormBuilder, private http: BookService, private auth: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private http: BookService, private auth: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.newBookForm = this.formBuilder.group({
       nombre: '',
       descripcion: '',
@@ -37,21 +41,49 @@ export class NewBookComponent implements OnInit {
     if (!this.auth.loggedIn) {
       this.router.navigate(['Home']);
     }
+    this.activatedRoute.params.subscribe((parameters) => {
+      const id: string = parameters.id;
+      this.http.getBook(id).subscribe((book) => {
+        this.titulo = 'Editar libro'
+        this.book = book;
+        this.newBookForm = this.formBuilder.group({
+          nombre: book.nombre,
+          descripcion: book.descripcion,
+          autor: book.autor,
+          imagen: book.imagen,
+          categorias: this.formBuilder.array(book.categorias)
+        });
+      })
+    })
   }
 
   onSubmit(bookData) {
-    this.http.addBook(bookData).subscribe((book) => {
-      this.mensaje = 'Libro creado con exito';
-      this.error = '';
-      this.newBookForm.reset();
-    }, err => {
-      this.mensaje = '';
-      if (err.error) {
-        this.error = err.error.message || 'Ha ocurrido un error al procesar su solicitud'
-      } else {
-        this.error = 'Ha ocurrido un error al procesar su solicitud'
-      }
-    });
+    if(!this.book){
+      this.http.addBook(bookData).subscribe((book) => {
+        this.mensaje = 'Libro creado con exito';
+        this.error = '';
+        this.newBookForm.reset();
+      }, err => {
+        this.mensaje = '';
+        if (err.error) {
+          this.error = err.error.message || 'Ha ocurrido un error al procesar su solicitud'
+        } else {
+          this.error = 'Ha ocurrido un error al procesar su solicitud'
+        }
+      });
+    }else{
+      this.http.editBook(bookData, this.book._id).subscribe((book) => {
+        this.mensaje = 'Libro editado con exito';
+        this.error = '';
+      }, err => {
+        this.mensaje = '';
+        if (err.error) {
+          this.error = err.error.message || 'Ha ocurrido un error al procesar su solicitud'
+        } else {
+          this.error = 'Ha ocurrido un error al procesar su solicitud'
+        }
+      });
+    }
   }
 
   add(event: MatChipInputEvent): void {

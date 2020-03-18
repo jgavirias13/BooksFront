@@ -28,4 +28,12 @@ export class BookService {
   public addBook(book){
     return this.http.post<Book>(`${this.baseUrl}/libro`,book);
   }
+
+  public editBook(book, id){
+    return this.http.patch<Book>(`${this.baseUrl}/libro/${id}`, book);
+  }
+
+  public deleteBook(id){
+    return this.http.delete<Book>(`${this.baseUrl}/libro/${id}`);
+  }
 }
