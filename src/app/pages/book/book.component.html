@@ -1,0 +1,24 @@
+<hr>
+<h1 class="text-center">
+    {{ book.nombre }}
+</h1>
+<hr>
+<h2 class="text-center"><small>{{ book.autor }}</small></h2>
+<div class="row no-gutters contenido">
+    <div class="col-md-3">
+        <img [src]="book.imagen" [alt]="book.nombre"
+        class="img-fluid rounded mx-auto d-block bookimg" />
+    </div>
+    <div class="col-md-9">
+        <p>
+            {{ book.descripcion }}
+        </p>
+        <h4>Categorias</h4>
+        <hr>
+        <ul *ngFor="let categoria of book.categorias">
+            <li>
+                <a href="#">{{ categoria }} </a>
+            </li>
+        </ul>
+    </div>
+</div>
