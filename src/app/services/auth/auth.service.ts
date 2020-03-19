@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class AuthService {
           return true;
         })
       );
+  }
+
+  register(user){
+    return this.http.post<User>(`${this.baseUrl}/auth/signup`, user);
   }
 
   logout() {

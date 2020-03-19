@@ -22,6 +22,8 @@ import { NewBookComponent } from './pages/new-book/new-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FavButtonComponent } from './components/fav-button/fav-button.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { RegistroComponent } from './pages/registro/registro.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -38,7 +40,9 @@ export function tokenGetter() {
     SearchComponent,
     NewBookComponent,
     FavButtonComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ProfileComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

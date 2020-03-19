@@ -16,4 +16,8 @@ export class UserService {
   public getUser(id: string){
     return this.http.get<User>(`${this.baseUrl}/user/${id}`);
   }
+
+  public updateUser(id: string, userData){
+    return this.http.patch<User>(`${this.baseUrl}/user/${id}`, userData);
+  }
 }
