@@ -36,4 +36,12 @@ export class BookService {
   public deleteBook(id){
     return this.http.delete<Book>(`${this.baseUrl}/libro/${id}`);
   }
+
+  public addToFavorites(id){
+    return this.http.post<Book>(`${this.baseUrl}/libro/addfavorite/${id}`, {});
+  }
+
+  public removeFromFavorites(id){
+    return this.http.post<Book>(`${this.baseUrl}/libro/rmfavorite/${id}`, {});
+  }
 }

@@ -4,7 +4,9 @@
 </h1>
 <hr>
 <div *ngIf="error" class="alert alert-danger" role="alert">{{ error }}</div>
+<app-fav-button [book]=book *ngIf="loggedIn()" class="float-right"></app-fav-button>
 <h2 class="text-center"><small>{{ book.autor }}</small></h2>
+
 <div class="row no-gutters contenido">
     <div class="col-md-3">
         <img [src]="book.imagen" [alt]="book.nombre"

@@ -24,7 +24,7 @@
           <a class="nav-link" [routerLink]="['Login']">Iniciar sesión</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn()">
-          <a class="nav-link" (click)="logout()" href="#">Cerrar sesión</a>
+          <a class="nav-link" (click)="logout()" href="#">Cerrar sesión ({{username}})</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

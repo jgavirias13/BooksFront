@@ -20,6 +20,8 @@ import { BookComponent } from './pages/book/book.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NewBookComponent } from './pages/new-book/new-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FavButtonComponent } from './components/fav-button/fav-button.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -34,7 +36,9 @@ export function tokenGetter() {
     BookCardComponent,
     BookComponent,
     SearchComponent,
-    NewBookComponent
+    NewBookComponent,
+    FavButtonComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

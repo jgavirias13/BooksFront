@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BookComponent } from './pages/book/book.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NewBookComponent } from './pages/new-book/new-book.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'NewBook', component: NewBookComponent},
   {path: 'EditBook/:id', component: NewBookComponent},
   {path: 'Search/:query', component: SearchComponent},
+  {path: 'Favorites', component: FavoritesComponent},
   {
     path: '**',
     pathMatch: 'full',
