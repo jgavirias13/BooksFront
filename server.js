@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.static(__dirname+'/dist/books'));
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/dist/books/index.html'));
+    res.sendFile(path.join(__dirname+'/dist/Books/index.html'));
 });
 
 app.listen(process.env.PORT || 8080);
