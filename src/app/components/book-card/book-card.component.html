@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-9">
             <div class="card-body">
-                <h4 class="card-title">{{ book.nombre }}</h4>
+                <h3 class="card-title">{{ book.nombre }}</h3>
                 <p class="card-text">{{ book.descripcion | slice:0:400 }}...
                     <a [routerLink]="['/Book', book._id]">Ver mas</a>
                 </p>
